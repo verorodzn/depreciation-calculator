@@ -383,3 +383,25 @@ function calcularSMARC(precioInicial, vidaUtil) {
 
   resultsContainer.innerHTML = html;
 }
+
+// Modal functionality
+const infoBtn = document.getElementById("infoBtn");
+const infoModal = document.getElementById("infoModal");
+const closeModal = document.getElementById("closeModal");
+
+// Open modal
+infoBtn.addEventListener("click", () => {
+  infoModal.classList.remove("hidden");
+});
+
+// Close modal
+closeModal.addEventListener("click", () => {
+  infoModal.classList.add("hidden");
+});
+
+// Close modal when clicking outside
+infoModal.addEventListener("click", (e) => {
+  if (e.target === infoModal) {
+    infoModal.classList.add("hidden");
+  }
+});

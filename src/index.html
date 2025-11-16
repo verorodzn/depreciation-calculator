@@ -17,139 +17,266 @@
         href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
 </head>
 
-<body class="p-12 flex justify-center">
-    <div class="container flex flex-wrap gap-8">
-        <!-- Calculator -->
-        <section class="border border-[#EAEAEB] p-8 rounded-xl gap-6 flex flex-col w-full lg:flex-1">
-            <div class="mb-2">
-                <div class="flex items-center gap-4">
-                    <i class="ph-fill ph-calculator text-2xl text-white bg-[#0A0B10] p-2 rounded-lg"></i>
-                    <div>
-                        <h2 class="font-bold">Calculadora de Depreciación</h2>
-                        <p class="text-[#7A787A]">Calcula la depreciación de tus activos</p>
+<body class="bg-[#F9FAFB]">
+    <!-- Header -->
+    <header class="bg-white border-b border-[#EAEAEB]">
+        <div class="container mx-auto px-12 py-6">
+            <h1 class="text-2xl font-bold text-[#0A0B10]">Calculadora de Depreciación</h1>
+        </div>
+        </div>
+    </header>
+
+    <div class="p-12 container flex justify-center w-full mx-auto space-y-8 flex-col">
+        <!-- Modal -->
+        <div id="infoModal" class="hidden fixed inset-0 bg-black/30 z-50 flex items-center justify-center p-4">
+            <div class="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="p-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-4">
+                            <i class="ph ph-info text-2xl text-blue-700 bg-blue-200 p-2 rounded-lg"></i>
+                            <div>
+                                <h2 class="font-bold text-2xl">Guía de Depreciación de Activos</h2>
+                                <p class="text-[#7A787A]">Recomendaciones para la elección de método</p>
+                            </div>
+                        </div>
+                        <button id="closeModal" class="text-gray-500 hover:text-gray-700 text-2xl">
+                            <i class="ph ph-x"></i>
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Card 1 -->
+                        <div class="border border-[#EAEAEB] rounded-lg p-6">
+                            <div class="flex items-start gap-3 mb-3">
+                                <i class="ph ph-presentation-chart text-2xl text-gray-700"></i>
+                                <div class="flex flex-col gap-2">
+                                    <h3 class="font-bold text-lg">Línea Recta</h3>
+                                    <p class="text-sm text-gray-600">El activo mantiene un uso constante a lo largo de
+                                        su
+                                        vida útil</p>
+                                    <div class="text-sm text-gray-700 space-y-1">
+                                        <p>
+                                            <span class="font-semibold">
+                                                Productos:
+                                            </span>
+                                            Muebles, computadoras, software, maquinaria ligera, equipos de oficina
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="border border-[#EAEAEB] rounded-lg p-6">
+                            <div class="flex items-start gap-3 mb-3">
+                                <i class="ph ph-chart-line-down text-2xl text-gray-700"></i>
+                                <div class="flex flex-col gap-2">
+                                    <h3 class="font-bold text-lg">Saldo Decreciente</h3>
+                                    <p class="text-sm text-gray-600">El activo se deprecia más rápido al inicio y
+                                        produce
+                                        sus mayores ingresos en los primeros años</p>
+                                    <div class="text-sm text-gray-700 space-y-1">
+                                        <p>
+                                            <span class="font-semibold">
+                                                Productos:
+                                            </span>
+                                            Equipos electrónicos, maquinaria tecnológica, vehículos, equipo que queda
+                                            obsoleto rápidamente
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="border border-[#EAEAEB] rounded-lg p-6">
+                            <div class="flex items-start gap-3 mb-3">
+                                <i class="ph ph-receipt text-2xl text-gray-700"></i>
+                                <div class="flex flex-col gap-2">
+                                    <h3 class="font-bold text-lg">Saldo Doble Decreciente</h3>
+                                    <p class="text-sm text-gray-600">El activo se deprecia muy rápido en los primeros
+                                        años y
+                                        se requiere reconocer mayores gastos al inicio.</p>
+                                    <div class="text-sm text-gray-700 space-y-1">
+                                        <p>
+                                            <span class="font-semibold">
+                                                Productos:
+                                            </span>
+                                            Camiones, vehiículos de reparto, maquinaria pesada, equipo de construcción,
+                                            tecnología costosa
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="border border-[#EAEAEB] rounded-lg p-6">
+                            <div class="flex items-start gap-3 mb-3">
+                                <i class="ph ph-seal-percent text-2xl text-gray-700"></i>
+                                <div class="flex flex-col gap-2">
+                                    <h3 class="font-bold text-lg">SMARC</h3>
+                                    <p class="text-sm text-gray-600">El uso del activo disminuye gradualmente, la
+                                        depreciación es acelerada pero no tan agresiva</p>
+                                    <div class="text-sm text-gray-700 space-y-1">
+                                        <p>
+                                            <span class="font-semibold">
+                                                Productos:
+                                            </span>
+                                            Vehículos, maquinaria industrial, equipos mecánicos o en casos donde sea
+                                            necesario cumplir con normativas aplicables en Estados Unidos
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
+                        <p class="text-sm text-gray-700">
+                            <span class="font-semibold">Nota:</span> Estas recomendaciones pueden servirte de guía, pero
+                            siéntete libre de adaptarlas o ignorarlas según lo que necesites.
+                        </p>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="container flex flex-wrap gap-8">
+            <!-- Calculator -->
+            <section class="border border-[#EAEAEB] bg-white p-8 rounded-xl gap-6 flex flex-col w-full lg:flex-1">
+                <div class="mb-2">
+                    <div class="flex items-center gap-4">
+                        <i class="ph-fill ph-calculator text-2xl text-white bg-[#0A0B10] p-2 rounded-lg"></i>
+                        <div>
+                            <h2 class="font-bold">Información del Activo</h2>
+                            <p class="text-[#7A787A]">Calcula la depreciación de tus activos</p>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="w-full">
-                <label class="block mb-2">
-                    Método de Depreciación
-                </label>
+                <div class="w-full">
+                    <label class="block mb-2">
+                        Método de Depreciación
+                    </label>
 
-                <!-- Custom Dropdown Wrapper -->
-                <div class="relative">
-                    <!-- Dropdown -->
-                    <button type="button" id="dropdownButton"
-                        class="w-full px-4 py-3 bg-[#F9FAFB] border border-[#EAEAEB] rounded-lg text-gray-700 focus:outline-none focus:ring-1 focus:ring-[#0A0B10] focus:border-transparent cursor-pointer text-left flex items-center justify-between">
-                        <span id="selectedText" class="text-gray-500">Selecciona un método</span>
-                        <i id="caretIcon" class="ph ph-caret-down text-gray-500 transition-transform duration-200"></i>
+                    <!-- Custom Dropdown Wrapper -->
+                    <div class="relative">
+                        <!-- Dropdown -->
+                        <button type="button" id="dropdownButton"
+                            class="w-full px-4 py-3 bg-[#F9FAFB] border border-[#EAEAEB] rounded-lg text-gray-700 focus:outline-none focus:ring-1 focus:ring-[#0A0B10] focus:border-transparent cursor-pointer text-left flex items-center justify-between">
+                            <span id="selectedText" class="text-gray-500">Selecciona un método</span>
+                            <i id="caretIcon"
+                                class="ph ph-caret-down text-gray-500 transition-transform duration-200"></i>
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div id="dropdownMenu"
+                            class="hidden absolute left-0 w-full mt-2 bg-white border border-[#EAEAEB] rounded-lg shadow-lg z-10 max-h-60 overflow-auto">
+                            <div data-value="linea-recta" class="px-4 py-3 hover:bg-gray-100 cursor-pointer">Método de
+                                Línea
+                                Recta</div>
+                            <div data-value="saldo-decreciente" class="px-4 py-3 hover:bg-gray-100 cursor-pointer">
+                                Método de
+                                Saldo Decreciente</div>
+                            <div data-value="saldo-doble-decreciente"
+                                class="px-4 py-3 hover:bg-gray-100 cursor-pointer">
+                                Método
+                                de Saldo Doble Decreciente</div>
+                            <div data-value="smarc" class="px-4 py-3 hover:bg-gray-100 cursor-pointer">Método
+                                SMARC</div>
+                        </div>
+
+                        <!-- Hidden input to store the value -->
+                        <input type="hidden" id="metodoDepreciacion" value="">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                        Precio Inicial ($)
+                    </label>
+                    <input type="number" id="precioInicial" placeholder="Ej. 5000"
+                        class="w-full px-4 py-3 bg-[#F9FAFB] border border-[#EAEAEB] rounded-lg text-gray-700 focus:outline-none focus:ring-1 focus:ring-[#0A0B10] focus:border-transparent text-left placeholder:text-gray-500">
+                </div>
+
+                <!-- Input normal de Vida Útil -->
+                <div id="vidaUtilInputContainer">
+                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                        Vida Útil (años)
+                    </label>
+                    <input type="number" id="vidaUtilManual" placeholder="Ej. 5"
+                        class="w-full px-4 py-3 bg-[#F9FAFB] border border-[#EAEAEB] rounded-lg text-gray-700 focus:outline-none focus:ring-1 focus:ring-[#0A0B10] focus:border-transparent text-left placeholder:text-gray-500">
+                </div>
+
+                <!-- Dropdown de Vida Útil (solo para SMARC) -->
+                <div id="vidaUtilDropdownContainer" class="w-full hidden">
+                    <label class="block mb-2">
+                        Vida Útil (años)
+                    </label>
+
+                    <div class="relative">
+                        <button type="button" id="dropdownButtonVidaUtil"
+                            class="w-full px-4 py-3 bg-[#F9FAFB] border border-[#EAEAEB] rounded-lg text-gray-700 focus:outline-none focus:ring-1 focus:ring-[#0A0B10] focus:border-transparent cursor-pointer text-left flex items-center justify-between">
+                            <span id="selectedTextVidaUtil" class="text-gray-500">Selecciona una opción</span>
+                            <i id="caretIconVidaUtil"
+                                class="ph ph-caret-down text-gray-500 transition-transform duration-200"></i>
+                        </button>
+
+                        <div id="dropdownMenuVidaUtil"
+                            class="hidden absolute left-0 w-full mt-2 bg-white border border-[#EAEAEB] rounded-lg shadow-lg z-10 max-h-60 overflow-auto">
+                            <div data-value="3" class="px-4 py-3 hover:bg-gray-100 cursor-pointer">3</div>
+                            <div data-value="5" class="px-4 py-3 hover:bg-gray-100 cursor-pointer">5</div>
+                            <div data-value="7" class="px-4 py-3 hover:bg-gray-100 cursor-pointer">7</div>
+                            <div data-value="10" class="px-4 py-3 hover:bg-gray-100 cursor-pointer">10</div>
+                            <div data-value="15" class="px-4 py-3 hover:bg-gray-100 cursor-pointer">15</div>
+                            <div data-value="20" class="px-4 py-3 hover:bg-gray-100 cursor-pointer">20</div>
+                        </div>
+
+                        <input type="hidden" id="vidaUtilDropdownValue" value="">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                        Valor de Rescate ($)
+                    </label>
+                    <input type="number" id="valorRescate" placeholder="Ej. 1000"
+                        class="w-full px-4 py-3 bg-[#F9FAFB] border border-[#EAEAEB] rounded-lg text-gray-700 focus:outline-none focus:ring-1 focus:ring-[#0A0B10] focus:border-transparent text-left placeholder:text-gray-500">
+                </div>
+
+                <div class="flex gap-4">
+                    <button id="calcularBtn"
+                        class="cursor-pointer w-1/2 font-bold bg-[#0A0B10] text-white px-6 py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-[#373537]">
+                        <i class="ph ph-math-operations"></i>
+                        Calcular
                     </button>
 
-                    <!-- Dropdown Menu -->
-                    <div id="dropdownMenu"
-                        class="hidden absolute left-0 w-full mt-2 bg-white border border-[#EAEAEB] rounded-lg shadow-lg z-10 max-h-60 overflow-auto">
-                        <div data-value="linea-recta" class="px-4 py-3 hover:bg-gray-100 cursor-pointer">Método de Línea
-                            Recta</div>
-                        <div data-value="saldo-decreciente" class="px-4 py-3 hover:bg-gray-100 cursor-pointer">Método de
-                            Saldo Decreciente</div>
-                        <div data-value="saldo-doble-decreciente" class="px-4 py-3 hover:bg-gray-100 cursor-pointer">
-                            Método
-                            de Saldo Doble Decreciente</div>
-                        <div data-value="smarc" class="px-4 py-3 hover:bg-gray-100 cursor-pointer">Método
-                            SMARC</div>
-                    </div>
-
-                    <!-- Hidden input to store the value -->
-                    <input type="hidden" id="metodoDepreciacion" value="">
-                </div>
-            </div>
-
-            <div>
-                <label class="block text-gray-700 text-sm font-medium mb-2">
-                    Precio Inicial ($)
-                </label>
-                <input type="number" id="precioInicial" placeholder="Ej. 5000"
-                    class="w-full px-4 py-3 bg-[#F9FAFB] border border-[#EAEAEB] rounded-lg text-gray-700 focus:outline-none focus:ring-1 focus:ring-[#0A0B10] focus:border-transparent text-left placeholder:text-gray-500">
-            </div>
-
-            <!-- Input normal de Vida Útil -->
-            <div id="vidaUtilInputContainer">
-                <label class="block text-gray-700 text-sm font-medium mb-2">
-                    Vida Útil (años)
-                </label>
-                <input type="number" id="vidaUtilManual" placeholder="Ej. 5"
-                    class="w-full px-4 py-3 bg-[#F9FAFB] border border-[#EAEAEB] rounded-lg text-gray-700 focus:outline-none focus:ring-1 focus:ring-[#0A0B10] focus:border-transparent text-left placeholder:text-gray-500">
-            </div>
-
-            <!-- Dropdown de Vida Útil (solo para SMARC) -->
-            <div id="vidaUtilDropdownContainer" class="w-full hidden">
-                <label class="block mb-2">
-                    Vida Útil (años)
-                </label>
-
-                <div class="relative">
-                    <button type="button" id="dropdownButtonVidaUtil"
-                        class="w-full px-4 py-3 bg-[#F9FAFB] border border-[#EAEAEB] rounded-lg text-gray-700 focus:outline-none focus:ring-1 focus:ring-[#0A0B10] focus:border-transparent cursor-pointer text-left flex items-center justify-between">
-                        <span id="selectedTextVidaUtil" class="text-gray-500">Selecciona una opción</span>
-                        <i id="caretIconVidaUtil" class="ph ph-caret-down text-gray-500 transition-transform duration-200"></i>
+                    <button id="infoBtn"
+                        class="cursor-pointer w-1/2 font-bold bg-white border border-[#EAEAEB] text-gray-700 px-6 py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-[#F9FAFB]">
+                        <i class="ph ph-question"></i>
+                        No Estoy Seguro
                     </button>
-
-                    <div id="dropdownMenuVidaUtil"
-                        class="hidden absolute left-0 w-full mt-2 bg-white border border-[#EAEAEB] rounded-lg shadow-lg z-10 max-h-60 overflow-auto">
-                        <div data-value="3" class="px-4 py-3 hover:bg-gray-100 cursor-pointer">3</div>
-                        <div data-value="5" class="px-4 py-3 hover:bg-gray-100 cursor-pointer">5</div>
-                        <div data-value="7" class="px-4 py-3 hover:bg-gray-100 cursor-pointer">7</div>
-                        <div data-value="10" class="px-4 py-3 hover:bg-gray-100 cursor-pointer">10</div>
-                        <div data-value="15" class="px-4 py-3 hover:bg-gray-100 cursor-pointer">15</div>
-                        <div data-value="20" class="px-4 py-3 hover:bg-gray-100 cursor-pointer">20</div>
-                    </div>
-
-                    <input type="hidden" id="vidaUtilDropdownValue" value="">
                 </div>
-            </div>
+            </section>
 
-            <div>
-                <label class="block text-gray-700 text-sm font-medium mb-2">
-                    Valor de Rescate ($)
-                </label>
-                <input type="number" id="valorRescate" placeholder="Ej. 1000"
-                    class="w-full px-4 py-3 bg-[#F9FAFB] border border-[#EAEAEB] rounded-lg text-gray-700 focus:outline-none focus:ring-1 focus:ring-[#0A0B10] focus:border-transparent text-left placeholder:text-gray-500">
-            </div>
-
-            <div class="flex gap-4">
-                <button id="calcularBtn"
-                    class="cursor-pointer w-1/2 font-bold bg-[#0A0B10] text-white px-6 py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-[#373537]">
-                    <i class="ph ph-math-operations"></i>
-                    Calcular
-                </button>
-
-                <button id="infoBtn"
-                    class="cursor-pointer w-1/2 font-bold bg-white border border-[#EAEAEB] text-gray-700 px-6 py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-[#F9FAFB]">
-                    <i class="ph ph-question"></i>
-                    No Estoy Seguro
-                </button>
-            </div>
-        </section>
-
-        <!-- Results Section -->
-        <section class="border border-[#EAEAEB] p-8 rounded-xl gap-6 flex flex-col w-full lg:flex-1">
-            <div class="mb-2">
-                <div class="flex items-center gap-4">
-                    <i class="ph ph-trend-down text-2xl text-blue-700 bg-blue-200 p-2 rounded-lg"></i>
-                    <div>
-                        <h2 class="font-bold">Resultados</h2>
-                        <p class="text-[#7A787A]">Los resultados aparecerán aquí después de calcular</p>
+            <!-- Results Section -->
+            <section class="border border-[#EAEAEB] bg-white p-8 rounded-xl gap-6 flex flex-col w-full lg:flex-1">
+                <div class="mb-2">
+                    <div class="flex items-center gap-4">
+                        <i class="ph ph-trend-down text-2xl text-blue-700 bg-blue-200 p-2 rounded-lg"></i>
+                        <div>
+                            <h2 class="font-bold">Resultados</h2>
+                            <p class="text-[#7A787A]">Los resultados aparecerán aquí después de calcular</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div id="resultsContainer" class="flex flex-col items-center justify-center h-full">
-                <p class="text-md text-center text-gray-700">Completa el formulario y presiona "Calcular" para ver los
-                    resultados.</p>
-            </div>
-        </section>
+                <div id="resultsContainer" class="flex flex-col items-center justify-center h-full">
+                    <p class="text-md text-center text-gray-700">Completa el formulario y presiona "Calcular" para ver
+                        los
+                        resultados.</p>
+                </div>
+            </section>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
-
 </html>
