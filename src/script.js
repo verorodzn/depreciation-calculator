@@ -144,7 +144,7 @@ function calcularLineaRecta(precioInicial, vidaUtil, valorRescate) {
 }
 
 function calcularSaldoDecreciente(precioInicial, vidaUtil, valorRescate) {
-  // Calcular depreciación anual
+  // Calcular tasa de depreciación anual
   const depreciacionTasa = 1 - Math.pow(valorRescate / precioInicial, 1 / 5);
 
   // Create results table
@@ -190,6 +190,75 @@ function calcularSaldoDecreciente(precioInicial, vidaUtil, valorRescate) {
     <td class="${
       !isLastRow ? "border-b" : ""
     } border-gray-300 px-4 py-3 font-semibold">$${formatNumber(
+      valorActual
+    )}</td>
+      </tr>
+    `;
+  }
+
+  html += `
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+
+  resultsContainer.innerHTML = html;
+}
+
+function calcularSaldoDobleDecreciente(precioInicial, vidaUtil, valorRescate) {
+  // Calcular tasa de depreciación anual
+  const depreciacionTasa = (2/vidaUtil);
+
+  // Create results table
+  let html = `
+    <h3 class="font-bold text-lg mb-4">Resultados - Saldo Decreciente</h3>
+    <div class="space-y-4 w-full">
+      <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+        <h3 class="font-bold text-lg mb-2">Tasa de Depreciación</h3>
+        <p class="text-3xl font-bold text-blue-600">${
+          depreciacionTasa.toFixed(4) * 100
+        }%</p>
+      </div>
+
+      <div class="overflow-hidden rounded-lg border border-gray-300">
+        <table class="w-full border-collapse">
+          <thead>
+            <tr class="bg-gray-100">
+              <th class="border-r border-b border-gray-300 px-4 py-3 text-left font-bold">Año</th>
+              <th class="border-b border-gray-300 px-4 py-3 text-left font-bold">Depreciación</th>
+              <th class="border-b border-gray-300 px-4 py-3 text-left font-bold">Valor en Libros</th>
+            </tr>
+          </thead>
+          <tbody>
+  `;
+
+  let valorActual = precioInicial;
+  let depreciacion = 0;
+
+  for (let i = 1; i <= vidaUtil; i++) {
+    if (i === vidaUtil) {
+      depreciacion = valorActual - valorRescate;
+      valorActual = valorRescate;
+    } else {
+      depreciacion = valorActual * depreciacionTasa;
+      valorActual = valorActual - depreciacion;
+    }
+    
+    const isLastRow = i === vidaUtil;
+    html += `
+      <tr class="hover:bg-gray-50 currency">
+        <td class="border-r ${
+          !isLastRow ? "border-b" : ""
+        } border-gray-300 px-4 py-3">Año ${i}</td>
+        <td class="border-r ${
+          !isLastRow ? "border-b" : ""
+        } border-gray-300 px-4 py-3 font-semibold">$${formatNumber(
+      depreciacion
+    )}</td>
+        <td class="${
+          !isLastRow ? "border-b" : ""
+        } border-gray-300 px-4 py-3 font-semibold">$${formatNumber(
       valorActual
     )}</td>
       </tr>
